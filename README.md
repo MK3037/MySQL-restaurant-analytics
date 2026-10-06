@@ -1,6 +1,6 @@
 # Little Lemon Restaurant Database
 
-A MySQL 8 database for a fast-food restaurant: customers, staff, menu, table bookings and orders, with the business rules enforced inside the database and a set of analytical SQL queries for sales and booking insights.
+A MySQL 8 database for a fast-food restaurant: customers, staff, menu, table bookings and orders, with the business rules enforced inside the database and a Tableau workbook for sales analysis.
 
 Built as the capstone of the **Meta Database Engineer Certificate**. The project starts from the course capstone brief; the schema design, stored procedures, triggers, analytics, indexing and security layer were developed further for this version.
 
@@ -17,6 +17,7 @@ Built as the capstone of the **Meta Database Engineer Certificate**. The project
 - [Security](#security)
 - [Testing](#testing)
 - [Known Limitations](#known-limitations)
+- [Data Analysis with Tableau](#data-analysis-with-tableau)
 
 ## Features
 
@@ -139,7 +140,9 @@ erDiagram
 │   ├── 07_security.sql      Roles and grants
 │   ├── 08_analytics.sql     CTE and window function queries
 │   └── 09_performance.sql   EXPLAIN comparisons
-└── LittleLemon_data.xlsx    Sample order data extract
+├── LittleLemon_data.xlsx    Data extract used by the Tableau workbook
+├── tableau.twb              Tableau workbook
+└── Images/                  Tableau screenshots
 ```
 
 ## Setup
@@ -300,3 +303,24 @@ The project was verified on MySQL 8.0 by loading `LittleLemonDB.sql` into an emp
 - There is no payment, tax or discount model. `TotalCost` is the sum of line prices.
 - Orders are not linked to bookings (delivery and dine-in are not distinguished).
 - The generated dataset is synthetic and evenly distributed, so analytics results show the queries working rather than real restaurant behaviour.
+
+## Data Analysis with Tableau
+
+A Tableau workbook with charts and dashboards for sales analysis. Download the workbook [here](./tableau.twb).
+
+The workbook reads from `LittleLemon_data.xlsx`, a separate data extract. It does not connect to the MySQL database, so it is independent of the SQL files. When opening it, Tableau may ask you to point to the location of `LittleLemon_data.xlsx`.
+
+### Customers sales
+![Customers sales](./Images/tableau-task1.png)
+
+### Profit chart
+![Profit chart](./Images/tableau-task2.png)
+
+### Sales Bubble Chart
+![Sales Bubble Chart](./Images/tableau-task3.png)
+
+### Cuisine Sales and Profits
+![Cuisine Sales and Profits](./Images/tableau-task4.png)
+
+### Dashboard
+![dashboard](./Images/tableau-task5.png)
